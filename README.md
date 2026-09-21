@@ -1,0 +1,1 @@
+I’m a student, creator, and builder with a passion for technology, design, and turning ideas into meaningful work. I enjoy learning quickly, solving problems, and creating projects that are thoughtful, polished, and impactful. My focus is on growth, creativity, and building a future rooted in ambition, discipline, and purpose.
