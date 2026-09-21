@@ -54,7 +54,12 @@ img {
 
 .background-bubbles {
   position: absolute;
-  inset: 0;
+  left: 50%;
+  top: 380px;
+  bottom: auto;
+  width: min(1280px, 100vw);
+  height: 220px;
+  transform: translateX(-50%);
   z-index: 0;
   pointer-events: none;
   overflow: visible;
@@ -63,13 +68,14 @@ img {
 
 .bubble {
   position: absolute;
-  bottom: -120px;
+  left: calc(50% + var(--offsetX, 0px));
+  bottom: 18px;
   width: 56px;
   height: 56px;
   border-radius: 50% 50% 46% 46% / 46% 46% 54% 54%;
   border: 1px solid rgba(121, 86, 63, 0.14);
   box-shadow: inset -18px -16px 20px rgba(255,255,255,0.12), inset 12px 10px 18px rgba(255,255,255,0.14), 0 18px 30px rgba(127, 79, 49, 0.12);
-  opacity: 0;
+  opacity: 0.82;
   animation: balloonLift var(--duration, 14s) ease-in infinite;
   animation-delay: var(--delay, 0s);
   will-change: transform, opacity;
@@ -87,231 +93,265 @@ img {
   filter: blur(2px);
 }
 
-.bubble::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: calc(100% + 4px);
-  width: 2px;
-  height: 96px;
-  background: linear-gradient(180deg, rgba(78, 57, 45, 0.72), rgba(120, 92, 74, 0.2));
-  border-radius: 999px;
-  transform: translateX(-50%);
-  box-shadow: 0 0 10px rgba(82, 57, 44, 0.14);
-  animation: stringDrift var(--duration, 14s) ease-in infinite;
-  animation-delay: var(--delay, 0s);
-}
-
-
 .bubble-one {
-  left: 8%;
+  --offsetX: -430px;
+  width: 110px;
+  height: 110px;
   --duration: 13s;
   --delay: -0.4s;
   --drift: 18px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(237, 176, 116, 0.42) 18%, rgba(201, 126, 77, 0.24) 42%, rgba(81, 53, 40, 0.08) 72%, rgba(255,255,255,0) 100%);
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.72), rgba(243, 214, 188, 0.44) 18%, rgba(200, 156, 122, 0.26) 42%, rgba(88, 64, 49, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-two {
-  left: 19%;
-  width: 72px;
-  height: 72px;
+  --offsetX: -290px;
+  width: 88px;
+  height: 88px;
   --duration: 15.5s;
   --delay: -3.2s;
-  --drift: 24px;
-  background: radial-gradient(circle at 30% 28%, rgba(255,255,255,0.72), rgba(162, 214, 197, 0.44) 18%, rgba(104, 160, 138, 0.22) 42%, rgba(42, 68, 61, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: 20px;
+  background: radial-gradient(circle at 30% 28%, rgba(255,255,255,0.72), rgba(165, 216, 201, 0.46) 18%, rgba(109, 165, 145, 0.22) 42%, rgba(52, 72, 64, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-three {
-  left: 32%;
+  --offsetX: -150px;
+  width: 94px;
+  height: 94px;
   --duration: 12.8s;
   --delay: -4.8s;
-  --drift: -20px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.72), rgba(234, 174, 132, 0.4) 18%, rgba(180, 112, 78, 0.22) 42%, rgba(70, 48, 38, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: -16px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(233, 173, 134, 0.42) 18%, rgba(175, 105, 74, 0.2) 42%, rgba(82, 50, 38, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-four {
-  left: 46%;
-  width: 64px;
-  height: 64px;
+  --offsetX: -40px;
+  width: 72px;
+  height: 72px;
   --duration: 16.2s;
   --delay: -6.7s;
-  --drift: 18px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(210, 168, 150, 0.42) 18%, rgba(163, 107, 80, 0.2) 42%, rgba(59, 42, 36, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: 12px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(210, 176, 157, 0.42) 18%, rgba(164, 114, 88, 0.2) 42%, rgba(72, 52, 44, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-five {
-  left: 58%;
+  --offsetX: 40px;
   width: 82px;
   height: 82px;
   --duration: 17.4s;
   --delay: -8.9s;
-  --drift: -22px;
+  --drift: -18px;
   background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(160, 216, 192, 0.44) 18%, rgba(93, 144, 121, 0.22) 42%, rgba(31, 56, 49, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-six {
-  left: 71%;
+  --offsetX: 150px;
+  width: 94px;
+  height: 94px;
   --duration: 14.4s;
   --delay: -10.1s;
-  --drift: 22px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(233, 170, 131, 0.4) 18%, rgba(164, 100, 73, 0.2) 42%, rgba(60, 38, 31, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: 18px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(237, 181, 137, 0.42) 18%, rgba(182, 112, 77, 0.2) 42%, rgba(63, 42, 35, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-seven {
-  left: 83%;
-  width: 54px;
-  height: 54px;
+  --offsetX: 270px;
+  width: 88px;
+  height: 88px;
   --duration: 13.6s;
   --delay: -11.4s;
-  --drift: -18px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(177, 240, 212, 0.4) 18%, rgba(94, 149, 127, 0.2) 42%, rgba(35, 58, 51, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: -16px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(169, 215, 195, 0.42) 18%, rgba(96, 149, 129, 0.22) 42%, rgba(40, 66, 57, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-eight {
-  left: 12%;
-  width: 76px;
-  height: 76px;
+  --offsetX: 410px;
+  width: 82px;
+  height: 82px;
   --duration: 18s;
   --delay: -13.8s;
-  --drift: 14px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(245, 196, 139, 0.44) 18%, rgba(183, 116, 76, 0.2) 42%, rgba(68, 45, 38, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: 16px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(244, 196, 145, 0.42) 18%, rgba(181, 120, 80, 0.2) 42%, rgba(60, 43, 36, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-nine {
-  left: 62%;
-  width: 44px;
-  height: 44px;
+  --offsetX: -330px;
+  width: 54px;
+  height: 54px;
   --duration: 12.3s;
   --delay: -2.8s;
-  --drift: -16px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(226, 183, 114, 0.4) 18%, rgba(166, 112, 64, 0.2) 42%, rgba(51, 37, 30, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: -14px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(210, 185, 153, 0.38) 18%, rgba(166, 112, 64, 0.2) 42%, rgba(51, 37, 30, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-ten {
-  left: 90%;
-  width: 48px;
-  height: 48px;
+  --offsetX: 350px;
+  width: 70px;
+  height: 70px;
   --duration: 15.8s;
   --delay: -9.6s;
-  --drift: 16px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(168, 210, 194, 0.42) 18%, rgba(88, 144, 118, 0.2) 42%, rgba(32, 53, 47, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: 14px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(163, 222, 211, 0.4) 18%, rgba(90, 146, 129, 0.2) 42%, rgba(35, 56, 49, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-eleven {
-  left: 28%;
-  width: 40px;
-  height: 40px;
+  --offsetX: -220px;
+  width: 44px;
+  height: 44px;
   --duration: 14.1s;
   --delay: -5.6s;
-  --drift: -14px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(232, 186, 132, 0.38) 18%, rgba(174, 106, 71, 0.18) 42%, rgba(58, 40, 31, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: -12px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(233, 196, 158, 0.38) 18%, rgba(170, 104, 77, 0.2) 42%, rgba(68, 41, 35, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-twelve {
-  left: 52%;
-  width: 36px;
-  height: 36px;
+  --offsetX: 240px;
+  width: 60px;
+  height: 60px;
   --duration: 13.2s;
   --delay: -7.6s;
   --drift: 12px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(171, 211, 170, 0.38) 18%, rgba(94, 140, 108, 0.18) 42%, rgba(38, 58, 46, 0.08) 72%, rgba(255,255,255,0) 100%);
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(178, 214, 192, 0.38) 18%, rgba(99, 142, 114, 0.18) 42%, rgba(43, 67, 56, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-thirteen {
-  left: 38%;
-  width: 30px;
-  height: 30px;
+  --offsetX: -10px;
+  width: 36px;
+  height: 36px;
   --duration: 12.9s;
   --delay: -12.4s;
   --drift: -12px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(235, 181, 126, 0.38) 18%, rgba(165, 102, 73, 0.18) 42%, rgba(57, 39, 31, 0.08) 72%, rgba(255,255,255,0) 100%);
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(223, 178, 132, 0.38) 18%, rgba(156, 109, 72, 0.18) 42%, rgba(67, 42, 36, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-fourteen {
-  left: 76%;
-  width: 60px;
-  height: 60px;
+  --offsetX: 200px;
+  width: 68px;
+  height: 68px;
   --duration: 16.8s;
   --delay: -14.6s;
-  --drift: -20px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(189, 206, 172, 0.42) 18%, rgba(108, 144, 101, 0.2) 42%, rgba(40, 57, 38, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: -14px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(191, 205, 179, 0.42) 18%, rgba(108, 145, 102, 0.2) 42%, rgba(42, 60, 39, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-fifteen {
-  left: 66%;
-  width: 32px;
-  height: 32px;
+  --offsetX: 120px;
+  width: 42px;
+  height: 42px;
   --duration: 11.9s;
   --delay: -10.8s;
-  --drift: 18px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(201, 179, 138, 0.38) 18%, rgba(147, 100, 70, 0.18) 42%, rgba(55, 40, 33, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: 12px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(206, 179, 144, 0.38) 18%, rgba(149, 100, 68, 0.18) 42%, rgba(62, 43, 34, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-sixteen {
-  left: 4%;
-  width: 42px;
-  height: 42px;
+  --offsetX: -260px;
+  width: 52px;
+  height: 52px;
   --duration: 14.5s;
   --delay: -8.5s;
-  --drift: -18px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(180, 212, 182, 0.38) 18%, rgba(95, 143, 105, 0.2) 42%, rgba(39, 58, 42, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: -16px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(179, 214, 194, 0.38) 18%, rgba(92, 143, 111, 0.2) 42%, rgba(38, 59, 46, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-seventeen {
-  left: 48%;
-  width: 28px;
-  height: 28px;
+  --offsetX: 310px;
+  width: 50px;
+  height: 50px;
   --duration: 12.1s;
   --delay: -4.1s;
-  --drift: 12px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(234, 193, 143, 0.38) 18%, rgba(168, 106, 73, 0.18) 42%, rgba(58, 40, 32, 0.08) 72%, rgba(255,255,255,0) 100%);
+  --drift: 10px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(229, 197, 154, 0.38) 18%, rgba(166, 109, 74, 0.18) 42%, rgba(57, 41, 33, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 .bubble-eighteen {
-  left: 88%;
+  --offsetX: 470px;
   width: 34px;
   height: 34px;
   --duration: 13.7s;
   --delay: -6.2s;
   --drift: -10px;
-  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(189, 215, 188, 0.4) 18%, rgba(102, 144, 103, 0.18) 42%, rgba(40, 60, 38, 0.08) 72%, rgba(255,255,255,0) 100%);
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(190, 218, 196, 0.4) 18%, rgba(103, 147, 105, 0.18) 42%, rgba(40, 62, 41, 0.08) 72%, rgba(255,255,255,0) 100%);
+}
+
+.bubble-nineteen {
+  --offsetX: -500px;
+  width: 48px;
+  height: 48px;
+  --duration: 16.5s;
+  --delay: -1.8s;
+  --drift: -14px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.72), rgba(224, 195, 184, 0.42) 18%, rgba(164, 120, 100, 0.2) 42%, rgba(68, 52, 45, 0.08) 72%, rgba(255,255,255,0) 100%);
+}
+
+.bubble-twenty {
+  --offsetX: -560px;
+  width: 40px;
+  height: 40px;
+  --duration: 14.9s;
+  --delay: -7.8s;
+  --drift: 16px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(176, 221, 214, 0.4) 18%, rgba(95, 149, 130, 0.2) 42%, rgba(42, 63, 57, 0.08) 72%, rgba(255,255,255,0) 100%);
+}
+
+.bubble-twenty-one {
+  --offsetX: 520px;
+  width: 52px;
+  height: 52px;
+  --duration: 15.6s;
+  --delay: -8.7s;
+  --drift: -18px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.7), rgba(238, 185, 146, 0.42) 18%, rgba(170, 108, 74, 0.2) 42%, rgba(70, 44, 36, 0.08) 72%, rgba(255,255,255,0) 100%);
+}
+
+.bubble-twenty-two {
+  --offsetX: 575px;
+  width: 36px;
+  height: 36px;
+  --duration: 13.9s;
+  --delay: -10.4s;
+  --drift: 12px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(185, 204, 184, 0.38) 18%, rgba(102, 140, 112, 0.2) 42%, rgba(40, 58, 47, 0.08) 72%, rgba(255,255,255,0) 100%);
+}
+
+.bubble-twenty-three {
+  --offsetX: -610px;
+  width: 30px;
+  height: 30px;
+  --duration: 12.4s;
+  --delay: -5.4s;
+  --drift: 11px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(232, 204, 174, 0.36) 18%, rgba(164, 116, 81, 0.18) 42%, rgba(64, 42, 35, 0.08) 72%, rgba(255,255,255,0) 100%);
+}
+
+.bubble-twenty-four {
+  --offsetX: 630px;
+  width: 28px;
+  height: 28px;
+  --duration: 11.8s;
+  --delay: -9.1s;
+  --drift: -11px;
+  background: radial-gradient(circle at 30% 25%, rgba(255,255,255,0.68), rgba(178, 216, 205, 0.38) 18%, rgba(90, 142, 126, 0.18) 42%, rgba(32, 53, 49, 0.08) 72%, rgba(255,255,255,0) 100%);
 }
 
 @keyframes balloonLift {
   0% {
-    transform: translate3d(0, 80px, 0) scale(0.72) rotate(-2deg);
-    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.8) rotate(-2deg);
+    opacity: 0.18;
   }
-  12% {
-    opacity: 0.8;
+  18% {
+    opacity: 0.52;
   }
-  28% {
-    transform: translate3d(calc(var(--drift) * 0.5), -20px, 0) scale(0.9) rotate(2deg);
-    opacity: 0.9;
+  38% {
+    transform: translate3d(calc(var(--drift) * 0.5), -30px, 0) scale(0.9) rotate(2deg);
+    opacity: 0.62;
   }
-  48% {
-    transform: translate3d(calc(var(--drift) * 0.9), -150px, 0) scale(1.02) rotate(-1deg);
-    opacity: 0.87;
-  }
-  72% {
-    transform: translate3d(var(--drift), -270px, 0) scale(1.08) rotate(4deg);
-    opacity: 0.7;
+  62% {
+    transform: translate3d(calc(var(--drift) * 0.9), -80px, 0) scale(1.02) rotate(-1deg);
+    opacity: 0.48;
   }
   100% {
-    transform: translate3d(calc(var(--drift) * -0.6), -440px, 0) scale(1.14) rotate(7deg);
-    opacity: 0;
-  }
-}
-
-@keyframes stringDrift {
-  0%, 100% {
-    transform: translateX(-50%) rotate(0deg) scaleY(0.9);
-  }
-  28% {
-    transform: translateX(calc(-50% + 6px)) rotate(2deg) scaleY(1);
-  }
-  60% {
-    transform: translateX(calc(-50% - 4px)) rotate(-2deg) scaleY(1.05);
+    transform: translate3d(calc(var(--drift) * -0.4), -150px, 0) scale(1.08) rotate(4deg);
+    opacity: 0.18;
   }
 }
 
