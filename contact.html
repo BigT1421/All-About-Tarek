@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Tarek</title>
+    <meta name="description" content="Contact page for Tarek." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="contact-body">
+    <div class="page-shell contact-shell">
+      <header class="topbar-wrap">
+        <nav class="site-nav" aria-label="Main navigation">
+          <div class="brand">Tarek</div>
+          <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="work.html">Work</a>
+            <a href="contact.html" class="active">Contact</a>
+          </div>
+        </nav>
+      </header>
+
+      <main class="contact-content">
+        <section class="contact-copy">
+          <p class="eyebrow">Contact</p>
+          <h1>Let’s connect.</h1>
+          <p class="lead">
+            I’m open to creative work, web projects, and collaborations. If you have an idea,
+            a project, or a question, send me a message and I’ll get back to you.
+          </p>
+
+          <div class="contact-details">
+            <span>New York, NY</span>
+          </div>
+        </section>
+
+        <section class="contact-panel">
+          <form id="contact-form" class="contact-form" method="post" action="/contact">
+            <div class="field-row two-up">
+              <label class="contact-field">
+                <span>First Name</span>
+                <input type="text" name="firstName" placeholder="Your first name" required />
+              </label>
+
+              <label class="contact-field">
+                <span>Last Name</span>
+                <input type="text" name="lastName" placeholder="Your last name" required />
+              </label>
+            </div>
+
+            <label class="contact-field">
+              <span>Email</span>
+              <input type="email" name="email" placeholder="you@example.com" required />
+            </label>
+
+            <label class="contact-field">
+              <span>Message</span>
+              <textarea name="message" rows="6" placeholder="Tell me about your idea..." required></textarea>
+            </label>
+
+            <button type="submit">Send Message</button>
+            <p id="form-status" class="form-status" aria-live="polite"></p>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+
+      function validateEmail(value) {
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(value.trim());
+      }
+
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const firstName = (formData.get('firstName') || '').toString().trim();
+        const lastName = (formData.get('lastName') || '').toString().trim();
+        const email = (formData.get('email') || '').toString().trim();
+        const message = (formData.get('message') || '').toString().trim();
+
+        if (!firstName || !lastName || !message) {
+          status.textContent = 'Please fill in your first name, last name, and message.';
+          status.classList.add('error');
+          return;
+        }
+
+        if (!validateEmail(email)) {
+          status.textContent = 'Please enter a valid email address.';
+          status.classList.add('error');
+          form.querySelector('input[name="email"]').focus();
+          return;
+        }
+
+        status.textContent = 'Sending message...';
+        status.classList.remove('error');
+
+        setTimeout(() => {
+          status.textContent = 'Message sent successfully.';
+          form.reset();
+          status.classList.remove('error');
+        }, 500);
+      });
+    </script>
+  </body>
+</html>

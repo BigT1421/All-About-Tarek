@@ -1,0 +1,19 @@
+{
+  "name": "Tarek",
+  "headline": "All About Me",
+  "photo": "",
+  "blurb": "I am Tarek, and this is a little snapshot of who I am. I am a student, a growing person, and someone who is always learning and trying to improve every day.",
+  "photoBlurb": "I am currently a student at Susan E. Wagner High School, and I have an identical twin brother. I am a sophomore graduating in 2029.",
+  "facts": [
+    { "label": "School", "value": "Susan E. Wagner High School" },
+    { "label": "Grade", "value": "Sophomore" },
+    { "label": "Class of", "value": "2029" },
+    { "label": "Family", "value": "Identical twin brother" }
+  ],
+  "details": [
+    "I am currently a student at Susan E. Wagner High School.",
+    "I have an identical twin brother.",
+    "I am a sophomore and graduating in the class of 2029.",
+    "I am always learning, growing, and becoming more confident in who I am."
+  ]
+}
